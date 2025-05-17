@@ -30,8 +30,16 @@ def add_pdf_to_graph(tmp_file_path, filename, llm, graph, embeddings, neo4j_url,
             Document(page_content=doc.page_content.replace("\n", ""), metadata={'source': filename})
             for doc in docs
         ]
-        allowed_nodes = ["Patient", "Disease", "Medication", "Test", "Symptom", "Doctor"]
-        allowed_relationships = ["HAS_DISEASE", "TAKES_MEDICATION", "UNDERWENT_TEST", "HAS_SYMPTOM", "TREATED_BY"]
+        allowed_nodes = [
+            "Threat", "Vulnerability", "Asset", "Control", "Attack", "Actor", "Incident",
+            "Mitigation", "Standard", "Organization", "System", "Domain", "Impact", "Measure",
+            "Policy", "Sector"
+        ]
+        allowed_relationships = [
+            "HAS_VULNERABILITY", "TARGETS", "PROTECTS", "MITIGATES", "CAUSES", "AFFECTS",
+            "BELONGS_TO", "COMPLIES_WITH", "RESPONDS_TO", "OCCURS_IN", "APPLIES_TO",
+            "IMPLEMENTS", "MONITORS", "REPORTS", "ASSOCIATED_WITH"
+        ]
         transformer = LLMGraphTransformer(
             llm=llm,
             allowed_nodes=allowed_nodes,
@@ -47,7 +55,7 @@ def add_pdf_to_graph(tmp_file_path, filename, llm, graph, embeddings, neo4j_url,
             username=neo4j_username,
             password=neo4j_password,
             database="neo4j",
-            node_label="Patient",
+            node_label="Cybersecurity",
             text_node_properties=["id", "text"],
             embedding_node_property="embedding",
             index_name="vector_index",
