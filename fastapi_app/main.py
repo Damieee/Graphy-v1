@@ -3,6 +3,7 @@ from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from schemas import QuestionRequest, QuestionResponse
 from services import process_pdf_service, answer_question_service
+from .config import settings
 
 app = FastAPI(
     title="Graphy v1 - FastAPI",
