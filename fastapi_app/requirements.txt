@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+python-dotenv
+langchain
+langchain-experimental
+openai
+neo4j
+pydantic
+streamlit
+
+
+uv add fastapi uvicorn python-dotenv langchain langchain-experimental openai neo4j pydantic
+
