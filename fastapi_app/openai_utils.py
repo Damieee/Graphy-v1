@@ -1,4 +1,4 @@
-from .config import settings
+from config import settings
 from langchain.chat_models import ChatOpenAI
 from langchain.embeddings import OpenAIEmbeddings
 
